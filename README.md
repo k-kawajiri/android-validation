@@ -2,4 +2,4 @@
 
 ## Licence
 
-see http://unlicense.org/ or the accompanying UNLICENSE file.
+see http://unlicense.org/ or the accompanying LICENSE file.
