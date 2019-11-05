@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">validation</string>
+    <string name="validation_error">入力した値が不正です。\n入力した値を見直してください。</string>
+    <string name="validation_required">必須入力項目です。</string>
+    <string name="validation_min_length">入力文字数が不足しています。（%1$s文字以上）</string>
+    <string name="validation_max_length">入力文字数が超過しています。（%1$s文字以下）</string>
 </resources>
