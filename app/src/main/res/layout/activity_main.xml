@@ -10,6 +10,8 @@
             type="com.k.k.validation.MainViewModel" />
 
         <import type="com.k.k.validation.validation.ValidationUtil" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,8 +64,8 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="@{ValidationUtil.noneError(viewModel.hissu)}"
-            android:text="必須入力OK時に活性化するボタン"
+            android:text="必須バリデーションOK時に\n表示するボタン"
+            android:visibility="@{ValidationUtil.noneError(viewModel.hissu)?View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/button2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -72,8 +74,8 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="@{ValidationUtil.noneError(viewModel.hissu, viewModel.minMax)}"
-            android:text="全てのバリデーションOK時に\n活性化するボタン"
+            android:visibility="@{ValidationUtil.noneError(viewModel.hissu, viewModel.minMax)?View.VISIBLE:View.GONE}"
+            android:text="全てのバリデーションOK時に\n表示するボタン"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

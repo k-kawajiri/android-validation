@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import com.k.k.validation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    var mainViewModel = MainViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         val activityMainBinding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         activityMainBinding.apply {
-            viewModel = mainViewModel
+            viewModel = MainViewModel()
             lifecycleOwner = this@MainActivity
         }
     }
