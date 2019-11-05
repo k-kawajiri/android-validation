@@ -1,18 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <variable
+            name="viewModel"
+            type="com.k.k.validation.MainViewModel" />
+
+        <import type="com.k.k.validation.validation.ValidationUtil" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/hissu_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="必須バリデーション"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/hissu"
+            errorMessage="@{viewModel.hissu}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@={viewModel.hissu}"
+            app:layout_constraintStart_toStartOf="@id/hissu_label"
+            app:layout_constraintTop_toBottomOf="@id/hissu_label" />
+
+        <TextView
+            android:id="@+id/min_max_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最小最大文字数バリデーション"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@id/hissu_label"
+            app:layout_constraintTop_toBottomOf="@id/hissu" />
+
+        <EditText
+            android:id="@+id/min_max"
+            errorMessage="@{viewModel.minMax}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@={viewModel.minMax}"
+            app:layout_constraintStart_toStartOf="@id/hissu_label"
+            app:layout_constraintTop_toBottomOf="@id/min_max_label" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="@{ValidationUtil.noneError(viewModel.hissu)}"
+            android:text="必須入力OK時に活性化するボタン"
+            app:layout_constraintBottom_toTopOf="@id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="@{ValidationUtil.noneError(viewModel.hissu, viewModel.minMax)}"
+            android:text="全てのバリデーションOK時に\n活性化するボタン"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
