@@ -60,7 +60,7 @@ class MinLength(private val min: Long) : ValidationType() {
         get() = arrayOf(min.toString())
 
     override fun validate(value: String?): Boolean {
-        return _validate(value) { it -> it.length >= min }
+        return _validate(value) { it -> it.isEmpty() || it.length >= min }
     }
 }
 
