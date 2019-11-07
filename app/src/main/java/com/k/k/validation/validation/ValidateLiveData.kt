@@ -7,7 +7,6 @@ class ValidateLiveData(val validationTypeList: Set<ValidationType>) :
     private var _isError = false
     val isError: Boolean
         get() = _isError
-    var messageList = mutableSetOf<Int>()
     var messageMap = mutableMapOf<Int, Array<String>>()
 
     override fun onInactive() {
@@ -37,12 +36,8 @@ class ValidateLiveData(val validationTypeList: Set<ValidationType>) :
      * @return true:バリデーション結果がOKである.
      */
     private fun validate(value: String?): Boolean {
-        messageList.clear()
         // second:バリデーションNGである.
         val validationResultPartition = validationTypeList.partition { it.validate(value) }
-        messageList = validationResultPartition.second.map {
-            it.defaultKey
-        }.toMutableSet()
         messageMap = validationResultPartition.second.associateBy(
             { it -> it.defaultKey },
             { it -> it.formatArgs }
