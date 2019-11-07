@@ -9,11 +9,6 @@ class ValidateLiveData(val validationTypeList: Set<ValidationType>) :
         get() = _isError
     var messageMap = mutableMapOf<Int, Array<String>>()
 
-    override fun onInactive() {
-        super.onInactive()
-        _isError = false
-    }
-
     override fun setValue(value: String) {
         super.setValue(value)
         _isError = validate(value)
