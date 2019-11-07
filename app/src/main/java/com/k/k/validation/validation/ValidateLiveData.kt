@@ -7,7 +7,7 @@ class ValidateLiveData(val validationTypeList: Set<ValidationType>) :
     private var _isError = false
     val isError: Boolean
         get() = _isError
-    var messageMap = mutableMapOf<Int, Array<String>>()
+    var messageMap = mapOf<Int, Array<String>>()
 
     override fun setValue(value: String) {
         super.setValue(value)
@@ -36,7 +36,7 @@ class ValidateLiveData(val validationTypeList: Set<ValidationType>) :
         messageMap = validationResultPartition.second.associateBy(
             { it -> it.defaultKey },
             { it -> it.formatArgs }
-        ).toMutableMap()
+        ).toMap()
 
         return validationResultPartition.second.isNotEmpty()
     }
