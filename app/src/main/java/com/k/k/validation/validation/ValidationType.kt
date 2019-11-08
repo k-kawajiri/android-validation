@@ -20,6 +20,7 @@ sealed class ValidationType() {
      * @param value バリデーション対象
      * @param validateIfValueIsNull: バリデーション対象がNullの場合のバリデーション結果
      * @param validateIfValueIsNotNull: バリデーション対象が非Nullの場合のバリデーション処理
+     * @return true: 妥当な値である
      */
     protected fun _validate(
         value: String?,

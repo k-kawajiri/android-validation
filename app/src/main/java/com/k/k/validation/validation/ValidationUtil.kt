@@ -6,7 +6,7 @@ object ValidationUtil {
     /**
      * バリデーションエラーが一つでもあるか判定する.
      *
-     * @param validateLiveData {@link ValidateLiveData}の配列
+     * @param validateLiveData [ValidateLiveData]の配列
      * @return true:バリデーションエラーが一つでもある
      *         false: バリデーションエラーがない
      */
